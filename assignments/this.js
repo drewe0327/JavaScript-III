@@ -33,12 +33,35 @@ ussEnterprise.warpSpeed("For warp speed zulu!")
 // code example for Implicit Binding
 
 // Principle 3
-function firePhaser(attack){
-    this
-}
 
 // code example for New Binding
+function firePhaser(attack){
+    this.command = "Fire"
+    this.attack = attack;
+    this.outcome = function () {
+        console.log(this.command + this.attack);
+        console.log(this);
+    };
+}
+
+const torpedo = new firePhaser("torpedo");
+const phaser = new firePhaser("phaser");
 
 // Principle 4
 
 // code example for Explicit Binding
+
+function firePhaser(attack) {
+    this.command = "Fire"
+    this.attack = attack;
+    this.outcome = function () {
+        return `prepare to ${this.command}`;
+       
+    }
+    console.log(this.command + this.attack);
+    console.log(this);
+}
+    const Kirk = new firePhaser("Status");
+    const Scotty = new firePhaser("Im not a doctor Jim");
+    
+   
